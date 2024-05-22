@@ -72,7 +72,7 @@ class BookInstance(models.Model):
     
     def __str__(self): return f'{self.id} {(self.book.title)}'
 
-class Lanauge(models.Model):
+class Language(models.Model):
     name = CharField(max_length=200,
                      help_text='언어',
                      unique=True)
