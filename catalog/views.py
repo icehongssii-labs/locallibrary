@@ -7,10 +7,13 @@ from django.views import generic
 
 class BookDetailView(generic.DetailView):
     model = Book
+    
+
 
 class BookListView(generic.ListView):
     # model=book으로 generic view가 db에서 book에잇는 레코드 전부가져올것임
     model = Book
+    paginate_by = 1 
     # 그리고 book_list.html에 렌더할것임 ({객체명}_list.html)
     # generic view가 /{어플리케이션이름}/{모델명}_list.html을찾아다닐거임 /{어프리케이션/templates안에서
     # 이런기본설정은 따로 바꿀수있긴함 만약에 특정짓고싶다면 아래와 같이
