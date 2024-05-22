@@ -5,6 +5,9 @@ from .models import Book, Author, BookInstance, Genre
 # Create your views here.
 from django.views import generic
 
+class BookDetailView(generic.DetailView):
+    model = Book
+
 class BookListView(generic.ListView):
     # model=book으로 generic view가 db에서 book에잇는 레코드 전부가져올것임
     model = Book

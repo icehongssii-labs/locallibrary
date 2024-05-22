@@ -9,5 +9,6 @@ urlpatterns = [
 path('', views.index, name='index'),
 # 이번에는 view를 클래스형식으로 가져올것임
 path('books/', views.BookListView.as_view(), name='books'),
+    path('book/<int:pk>', views.BookDetailView.as_view(), name='book-detail'),
 
 ]
