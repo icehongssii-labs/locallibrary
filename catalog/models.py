@@ -31,6 +31,7 @@ class Genre(models.Model):
 # 책
 
 class Book(models.Model):
+    lanauge = ForeignKey('Language', on_delete=models.RESTRICT, null=True)
     title = CharField(max_length=200,
                       help_text='책제목')
     # 한명의 저자는 여러 책을 가질 수 잇다
@@ -71,6 +72,21 @@ class BookInstance(models.Model):
     
     def __str__(self): return f'{self.id} {(self.book.title)}'
 
+class Lanauge(models.Model):
+    name = CharField(max_length=200,
+                     help_text='언어',
+                     unique=True)
+    def get_absolute_url(self): return reverse('language-detail', args=[str(self.id)])
+    def __str__(self): return self.name
+    class Meta:
+        constraints = [
+            UniqueConstraint(
+                Lower('name'),
+                name='language_name_case_insensitive_unique',
+                violation_error_message = "Language already exists (case insensitive match)"
+            ),
+        ]
+        
 
 class Author(models.Model):
     """Model representing an author."""
