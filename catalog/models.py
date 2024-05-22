@@ -48,7 +48,7 @@ class Book(models.Model):
     # 하나의 책은 여러개의 장르를 가질 수 있기 때문에 다대다 관계이다
     genre = ManyToManyField(Genre, help_text="골라라")
     
-    def __str__(self): return self.name
+    def __str__(self): return self.title
     def get_absolute_url(self): return reverse('book-detail',args=[str(self.id)])
 
 
