@@ -50,7 +50,11 @@ class Book(models.Model):
     
     def __str__(self): return self.title
     def get_absolute_url(self): return reverse('book-detail',args=[str(self.id)])
-
+    def display_genre(self):
+        print(self.genre.all()) #<QuerySet [<Genre: Fiction>, <Genre: MyStery>]>
+        # 3개만 추출하는구나
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+    display_genre.short_description = '장르!'
 
 # 책 인스턴스 모델
 class BookInstance(models.Model):
